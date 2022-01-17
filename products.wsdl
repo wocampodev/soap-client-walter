@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.wocampo.dev/soap/server/webservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.wocampo.dev/soap/server/webservice" targetNamespace="http://www.wocampo.dev/soap/server/webservice">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.wocampo.dev/soap/server/webservice">
+
+      <xs:element name="getProductsRequest">
+        <xs:complexType />
+      </xs:element>
+
+      <xs:element name="getProductsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="status" type="tns:serviceStatus" />
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="product" type="tns:product" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="getProductByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="productId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="getProductByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="status" type="tns:serviceStatus" />
+            <xs:element maxOccurs="1" minOccurs="1" name="product" type="tns:product" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="saveProductRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string" />
+            <xs:element maxOccurs="1" minOccurs="1" name="price" type="xs:int" />
+            <xs:element maxOccurs="1" minOccurs="0" name="description" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="saveProductResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="status" type="tns:serviceStatus" />
+            <xs:element maxOccurs="1" minOccurs="1" name="product" type="tns:product" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="updateProductRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="product" type="tns:product" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="updateProductResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="status" type="tns:serviceStatus" />
+            <xs:element maxOccurs="1" minOccurs="1" name="product" type="tns:product" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="deleteProductRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="productId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="deleteProductResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="1" name="status" type="tns:serviceStatus" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="code" type="xs:string" />
+          <xs:element maxOccurs="1" minOccurs="1" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="product">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="productId" type="xs:int" />
+          <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string" />
+          <xs:element maxOccurs="1" minOccurs="1" name="price" type="xs:int" />
+          <xs:element maxOccurs="1" name="description" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="saveProductRequest">
+    <wsdl:part element="tns:saveProductRequest" name="saveProductRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteProductResponse">
+    <wsdl:part element="tns:deleteProductResponse" name="deleteProductResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductsRequest">
+    <wsdl:part element="tns:getProductsRequest" name="getProductsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveProductResponse">
+    <wsdl:part element="tns:saveProductResponse" name="saveProductResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateProductResponse">
+    <wsdl:part element="tns:updateProductResponse" name="updateProductResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteProductRequest">
+    <wsdl:part element="tns:deleteProductRequest" name="deleteProductRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductByIdResponse">
+    <wsdl:part element="tns:getProductByIdResponse" name="getProductByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductsResponse">
+    <wsdl:part element="tns:getProductsResponse" name="getProductsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductByIdRequest">
+    <wsdl:part element="tns:getProductByIdRequest" name="getProductByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateProductRequest">
+    <wsdl:part element="tns:updateProductRequest" name="updateProductRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ProductsPort">
+    <wsdl:operation name="saveProduct">
+      <wsdl:input message="tns:saveProductRequest" name="saveProductRequest"></wsdl:input>
+      <wsdl:output message="tns:saveProductResponse" name="saveProductResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProduct">
+      <wsdl:input message="tns:deleteProductRequest" name="deleteProductRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteProductResponse" name="deleteProductResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProducts">
+      <wsdl:input message="tns:getProductsRequest" name="getProductsRequest"></wsdl:input>
+      <wsdl:output message="tns:getProductsResponse" name="getProductsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProduct">
+      <wsdl:input message="tns:updateProductRequest" name="updateProductRequest"></wsdl:input>
+      <wsdl:output message="tns:updateProductResponse" name="updateProductResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductById">
+      <wsdl:input message="tns:getProductByIdRequest" name="getProductByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getProductByIdResponse" name="getProductByIdResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductsPortSoap11" type="tns:ProductsPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="saveProduct">
+      <soap:operation soapAction="" />
+      <wsdl:input name="saveProductRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="saveProductResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProduct">
+      <soap:operation soapAction="" />
+      <wsdl:input name="deleteProductRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteProductResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProducts">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getProductsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getProductsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProduct">
+      <soap:operation soapAction="" />
+      <wsdl:input name="updateProductRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateProductResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductById">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getProductByIdRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getProductByIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductsPortService">
+    <wsdl:port binding="tns:ProductsPortSoap11" name="ProductsPortSoap11">
+      <soap:address location="http://localhost:8080/webservice" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
